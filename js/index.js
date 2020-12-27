@@ -1,5 +1,5 @@
 function playSound(key){
-    console.log(key)
+    // console.log(key)
     switch (key) {
         case "w":
             new Audio('sounds/crash.mp3').play();
@@ -25,10 +25,19 @@ function playSound(key){
         default:
             break;
     }
+
+    // Animate buttons
+    buttonAnimation(key);
+}
+
+function buttonAnimation(key_pressed){
+    var elPressed = document.querySelector("." + key_pressed)
+    elPressed.classList.add("pressed");
+    setTimeout(function(){elPressed.classList.remove("pressed"); }, 100);
 }
 
 document.addEventListener("keydown", function (event){
-    console.log(event);
+    // console.log(event);
     playSound(event.key)});
 
 var buttons = document.querySelectorAll(".drum");
